@@ -4,6 +4,7 @@ const PropTypes = require('prop-types')
 const { getDeviceId } = require('./getDeviceId')
 const havePropsChanged = require('./havePropsChanged')
 const createBlob = require('./createBlob')
+const extractQrCodeAddress = require('./extractQrCodeAddress')
 
 // Require adapter to support older browser implementations
 require('webrtc-adapter')
@@ -270,7 +271,11 @@ module.exports = class Reader extends Component {
   handleWorkerMessage(e) {
     const { onScan, legacyMode, delay } = this.props
     const decoded = e.data
-    onScan(decoded || null)
+    if (!decoded) {
+      onScan(null)
+    } else {
+      onScan(extractQrCodeAddress(decoded))
+    }
 
     if (!legacyMode && typeof delay == 'number' && this.worker) {
       this.timeout = setTimeout(this.check, delay)

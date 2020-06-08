@@ -1,5 +1,5 @@
 {
-  "name": "@perfectmak/eth-qr-scanner",
+  "name": "eth-qr-scanner",
   "version": "1.0.0",
   "description": "A react component for reading QR codes.",
   "main": "./lib/index.js",

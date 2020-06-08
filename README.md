@@ -1,12 +1,10 @@
-[![npm version](https://badge.fury.io/js/react-qr-reader.svg)](https://badge.fury.io/js/react-qr-reader)
-
 ## Introduction
 
-A [React](https://facebook.github.io/react/) component for reading QR codes from the webcam. It uses the WebRTC standards for reading webcam data and [jsQR](https://github.com/cozmo/jsQR) is used for detecting QR codes in that data. To optimise the speed and experience, a web-worker is used to offload the heavy QR code algorithm on a separate process. The web worker is inlined and loaded on creation of the component.
+A [React](https://facebook.github.io/react/) component for reading ETH QR codes from the webcam. It uses the WebRTC standards for reading webcam data and [jsQR](https://github.com/cozmo/jsQR) is used for detecting QR codes in that data. To optimise the speed and experience, a web-worker is used to offload the heavy QR code algorithm on a separate process. The web worker is inlined and loaded on creation of the component.
 
 ## Demo
 
-[https://jodusnodus.github.io/react-qr-reader](https://jodusnodus.github.io/react-qr-reader)
+It is currently being used in [SendNGNT dApp](https://sendngnt.com).
 
 ## Known Issues
 
@@ -17,13 +15,13 @@ A [React](https://facebook.github.io/react/) component for reading QR codes from
 
 ## Install
 
-`npm install --save react-qr-reader`
+`npm install --save eth-qr-reader`
 
 ## Example
 
 ```js
 import React, { Component } from 'react'
-import QrReader from 'react-qr-reader'
+import QrReader from 'eth-qr-reader'
 
 class Test extends Component {
   state = {
@@ -63,7 +61,7 @@ class Test extends Component {
 
 | Prop        | Argument         | Description                                                                                                     |
 | ----------- | ---------------- | --------------------------------------------------------------------------------------------------------------- |
-| onScan      | `result`         | Scan event handler. Called every scan with the decoded value or `null` if no QR code was found.                 |
+| onScan      | `result`         | Scan event handler. Called every scan with the decoded ethereum address or `null` if no QR code was found.                 |
 | onError     | `Error`          | Called when an error occurs.                                                                                    |
 | onLoad      | `object`         | Called when the component is ready for use. Object properties are `mirrorVideo`: boolean, `streamLabel`: string |
 | onImageLoad | img onLoad event | Called when the image in legacyMode is loaded.                                                                  |
