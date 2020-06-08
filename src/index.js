@@ -1,7 +1,7 @@
 const React = require('react')
 const { Component } = React
 const PropTypes = require('prop-types')
-const { getDeviceId, getFacingModePattern } = require('./getDeviceId')
+const { getDeviceId } = require('./getDeviceId')
 const havePropsChanged = require('./havePropsChanged')
 const createBlob = require('./createBlob')
 
@@ -153,7 +153,7 @@ module.exports = class Reader extends Component {
       constraints.frameRate = { ideal: 25, min: 10 }
     }
 
-    const vConstraintsPromise = (supported.facingMode || isFirefox)
+    const vConstraintsPromise = isFirefox
       ? Promise.resolve(props.constraints || constraints)
       : getDeviceId(facingMode).then(deviceId => Object.assign({}, { deviceId }, props.constraints))
 
