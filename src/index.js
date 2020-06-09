@@ -271,9 +271,7 @@ module.exports = class Reader extends Component {
   handleWorkerMessage(e) {
     const { onScan, legacyMode, delay } = this.props
     const decoded = e.data
-    if (!decoded) {
-      onScan(null)
-    } else {
+    if (decoded) {
       onScan(extractQrCodeAddress(decoded))
     }
 
